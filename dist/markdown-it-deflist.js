@@ -59,7 +59,7 @@ module.exports = function deflist_plugin(md) {
         itemLines,
         listLines,
         listTokIdx,
-        max,
+        max = state.eMarks[startLine],
         nextLine,
         offset,
         oldDDIndent,
@@ -68,7 +68,7 @@ module.exports = function deflist_plugin(md) {
         oldSCount,
         oldTShift,
         oldTight,
-        pos,
+        pos = state.bMarks[startLine],
         prevEmptyEnd,
         tight,
         token;
