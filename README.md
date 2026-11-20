@@ -1,8 +1,7 @@
 # markdown-it-deflist
 
-[![Build Status](https://img.shields.io/travis/markdown-it/markdown-it-deflist/master.svg?style=flat)](https://travis-ci.org/markdown-it/markdown-it-deflist)
-[![NPM version](https://img.shields.io/npm/v/markdown-it-deflist.svg?style=flat)](https://www.npmjs.org/package/markdown-it-deflist)
-[![Coverage Status](https://img.shields.io/coveralls/markdown-it/markdown-it-deflist/master.svg?style=flat)](https://coveralls.io/r/markdown-it/markdown-it-deflist?branch=master)
+[![CI](https://github.com/hackmdio/markdown-it-deflist/actions/workflows/ci.yml/badge.svg)](https://github.com/hackmdio/markdown-it-deflist/actions/workflows/ci.yml)
+[![NPM version](https://img.shields.io/npm/v/@hackmd/markdown-it-deflist.svg?style=flat)](https://www.npmjs.com/package/@hackmd/markdown-it-deflist)
 
 > Definition list (`<dl>`) tag plugin for [markdown-it](https://github.com/markdown-it/markdown-it) markdown parser.
 
