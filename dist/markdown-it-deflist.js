@@ -10,7 +10,6 @@ https://github.com/markdown-it/markdown-it-deflist
 //
 'use strict';
 
-
 module.exports = function deflist_plugin(md) {
   var isSpace = md.utils.isSpace;
 
@@ -59,7 +58,7 @@ module.exports = function deflist_plugin(md) {
         itemLines,
         listLines,
         listTokIdx,
-        max = state.eMarks[startLine],
+        max,
         nextLine,
         offset,
         oldDDIndent,
@@ -121,13 +120,16 @@ module.exports = function deflist_plugin(md) {
       token.map      = [ dtLine, dtLine ];
       token.position = state.bMarks[dtLine];
 
-      var originalContent = state.src.slice(pos, max);
+      // `pos` and `max` are reused by the dd loop below, so compute the term
+      // range from its own line on every iteration.
+      var dtStart = state.bMarks[dtLine] + state.tShift[dtLine];
+      var dtText = state.src.slice(dtStart, state.eMarks[dtLine]).trimEnd();
       token          = state.push('inline', '', 0);
       token.map      = [ dtLine, dtLine ];
       token.content  = state.getLines(dtLine, dtLine + 1, state.blkIndent, false).trim();
       token.children = [];
-      token.position = pos + trimLeftOffset(originalContent);
-      token.size = max - pos;
+      token.position = dtStart;
+      token.size = dtText.length;
 
       token          = state.push('dt_close', 'dt', -1);
 
@@ -240,10 +242,6 @@ module.exports = function deflist_plugin(md) {
 
   md.block.ruler.before('paragraph', 'deflist', deflist, { alt: [ 'paragraph', 'reference', 'blockquote' ] });
 };
-
-function trimLeftOffset(str) {
-  return str.length - str.trimLeft().length;
-}
 
 },{}]},{},[])("/")
 });
